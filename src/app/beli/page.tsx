@@ -1,8 +1,10 @@
 "use client";
+// Triggering rebuild to fix routing issue
+
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, ChevronRight, Shield, Truck, RotateCcw, Star, Minus, Plus, ShoppingCart } from "lucide-react";
+import { Check, ChevronRight, Minus, Plus, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 
@@ -69,7 +71,7 @@ export default function BeliPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Top bar */}
-      <div className="fixed top-0 inset-x-0 z-50 glass border-b border-white/5 py-6">
+      <div className="fixed top-0 inset-x-0 z-50 glass border-b border-white/5 py-4">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
             <img 
@@ -78,12 +80,6 @@ export default function BeliPage() {
               className="h-5 md:h-6 brightness-0 invert"
             />
           </Link>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-foreground/70">
-            <Link href="/#features" className="hover:text-white transition-colors">Features</Link>
-            <Link href="/#showcase" className="hover:text-white transition-colors">Design</Link>
-            <Link href="/#ai" className="hover:text-white transition-colors">Galaxy AI</Link>
-            <Link href="/#gallery" className="hover:text-white transition-colors">Gallery</Link>
-          </nav>
           <div className="flex items-center gap-4">
             <button
               onClick={openCart}
@@ -96,8 +92,11 @@ export default function BeliPage() {
                 </span>
               )}
             </button>
-            <Link href="/" className="text-sm text-foreground/60 hover:text-white transition-colors flex items-center gap-1">
-              ← Kembali
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-[10px] md:text-xs font-bold text-foreground/70 hover:text-white transition-all bg-white/5 hover:bg-white/10 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-white/10"
+            >
+              ← <span className="uppercase tracking-widest">Kembali</span>
             </Link>
           </div>
         </div>
@@ -153,16 +152,10 @@ export default function BeliPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="flex flex-col gap-8"
           >
-            {/* Title + Rating */}
+            {/* Title */}
             <div>
               <p className="text-primary text-sm font-semibold uppercase tracking-widest mb-2">Samsung</p>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-3">Galaxy S26 Ultra</h1>
-              <div className="flex items-center gap-2">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
-                <span className="text-sm text-foreground/50 ml-1">(1.284 ulasan)</span>
-              </div>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tighter">Galaxy S26 Ultra</h1>
             </div>
 
             {/* Price */}
@@ -255,20 +248,6 @@ export default function BeliPage() {
                   <><ShoppingCart className="w-5 h-5" /> Tambah ke Keranjang</>
                 )}
               </button>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="grid grid-cols-3 gap-3">
-              {[
-                { icon: <Truck className="w-5 h-5 text-primary" />, text: "Gratis Ongkir" },
-                { icon: <Shield className="w-5 h-5 text-primary" />, text: "Garansi 2 Tahun" },
-                { icon: <RotateCcw className="w-5 h-5 text-primary" />, text: "30 Hari Return" },
-              ].map((b, i) => (
-                <div key={i} className="glass-panel rounded-xl p-3 flex flex-col items-center gap-2 text-center">
-                  {b.icon}
-                  <span className="text-xs text-foreground/70 font-medium">{b.text}</span>
-                </div>
-              ))}
             </div>
 
             {/* Feature list */}

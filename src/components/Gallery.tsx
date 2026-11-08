@@ -16,7 +16,7 @@ const photos = [
     span: "",
   },
   {
-    src: "/images/gallery_macro.png",
+    src: "/images/Macro-Mode-S26-ULTRA.jpg",
     label: "Macro Ultra",
     desc: "Detail tak terlihat mata",
     span: "",
@@ -86,7 +86,7 @@ export function Gallery() {
           <div className="md:col-span-2 grid grid-rows-2 gap-4 h-[500px]">
             {[
               { src: "/images/gallery_portrait.png", label: "Portrait Mode", desc: "Bokeh sinematik" },
-              { src: "/images/gallery_macro.png", label: "Macro Ultra", desc: "Detail tak terlihat mata" },
+              { src: "/images/Macro-Mode-S26-ULTRA.jpg", label: "Macro Ultra", desc: "Detail tak terlihat mata" },
             ].map((photo, idx) => (
               <motion.div
                 key={idx}
